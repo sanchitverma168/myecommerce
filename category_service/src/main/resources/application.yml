@@ -1,0 +1,16 @@
+# spring.application.name=/
+spring:
+  application:
+    name: category-service
+
+server:
+  port: 6103
+  
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://192.168.1.2:6200/eureka

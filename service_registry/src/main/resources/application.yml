@@ -1,0 +1,9 @@
+# spring.application.name=service_registry
+server:
+  port: 6200
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false

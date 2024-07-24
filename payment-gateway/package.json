@@ -1,0 +1,17 @@
+{
+  "name": "payment-gateway-service",
+  "version": "1.0.0",
+  "description": "Payment Gateway service application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Sanchit",
+  "license": "ISC",
+  "dependencies": {
+    "eureka-js-client": "^4.5.0",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}

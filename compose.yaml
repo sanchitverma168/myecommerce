@@ -1,0 +1,134 @@
+services:
+  api_gateway:
+    image: api_gateway_image
+    container_name: api_gateway
+    build: api_gateway/
+    ports:
+      - 6199:6199
+    networks:
+      kirmada:
+    healthcheck:
+      test: "exit 0"
+    depends_on:
+      user-service:
+        condition: service_healthy
+      cart-service:
+        condition: service_healthy
+      vendor-service:
+        condition: service_healthy
+      product-service:
+        condition: service_healthy
+      category-service:
+        condition: service_healthy
+
+  service_registry:
+    image: service_registry_image
+    container_name: service_registry
+    build: service_registry/
+    # depends_on:
+    #   api_gateway:
+    #     condition: service_healthy
+    ports:
+      - 6200:6200
+    networks:
+      kirmada:
+    healthcheck:
+      test: "exit 0"
+
+  frontend:
+    container_name: frontend_ecom
+    image: frontend_ecom_image
+    build: frontend/
+    ports:
+      - 6100:6100
+    networks:
+      - kirmada
+    healthcheck:
+      test: "exit 0"
+    volumes:
+      - /home/logi/ecom_website_volumes/frontend:/var/www/ecom_website_frontend
+  
+  react_book_logs:
+    container_name: react_books_logs
+    image: react_books_logs_image
+    build: react-books-logs/
+    ports:
+      - 6198:3000
+    networks:
+      - kirmada
+    healthcheck:
+      test: "exit 0"
+    volumes:
+      - /home/logi/ecom_website_volumes/react-books-logs:/var/www/react_books_logs
+  
+  user-service:
+    image: user-service-image
+    container_name: user-service
+    build: user_service/
+    ports:
+      - 6101:6101
+    depends_on:
+      service_registry:
+        condition: service_healthy
+    networks:
+      - kirmada
+    healthcheck:
+      test: "exit 0"
+
+  cart-service:
+    image: cart_service_image
+    container_name: cart_service
+    build: cart_service/
+    ports:
+      - 6102:6102
+    depends_on:
+      service_registry:
+        condition: service_healthy
+    networks:
+      kirmada:
+    healthcheck:
+      test: "exit 0"
+
+  category-service:
+    image: category_service_image
+    container_name: category_service
+    build: category_service/
+    ports:
+      - 6103:6103
+    depends_on:
+      service_registry:
+        condition: service_healthy
+    networks:
+      kirmada:
+    healthcheck:
+      test: "exit 0"
+      
+  product-service:
+    image: product_service_image
+    container_name: product_service
+    build: product_service/
+    ports:
+      - 6104:6104
+    depends_on:
+      service_registry:
+        condition: service_healthy
+    networks:
+      kirmada:
+    healthcheck:
+      test: "exit 0"
+
+  vendor-service:
+    image: vendor_service_image
+    container_name: vendor_service
+    build: vendor_service/
+    ports:
+      - 6105:6105
+    depends_on:
+      service_registry:
+        condition: service_healthy
+    networks:
+      kirmada:
+    healthcheck:
+      test: "exit 0"
+networks:
+  kirmada:

@@ -1,0 +1,9 @@
+{
+    "docker compose up":"up all services",
+    "docker compose down":"down all services",
+    "docker compose up -d --build <folder name as listed in compose.yaml file>":"run in background , build and start the container",
+    "docker ps":"list all running containers ",
+    "docker ps -a":"list all running containers and all stopped containers",
+    "docker stop <container_name>":"stop container",
+    "docker remove <container_name>":"remove container"
+}

@@ -1,0 +1,76 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "service_registry",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ecom_website.service_registry.service_registry.ServiceRegistryApplication",
+            "projectName": "service_registry",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=38647 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=service_registry"
+        },
+        {
+            "type": "java",
+            "name": "cart_service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanchitverma.ecommerce.website.cart_service.CartServiceApplication",
+            "projectName": "cart_service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=33997 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=cart_service"
+        },
+        {
+            "type": "java",
+            "name": "category_service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanchitverma.ecommerce.website.category_service.CategoryServiceApplication",
+            "projectName": "category_service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "product_service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanchitverma.ecommerce.website.product_service.ProductServiceApplication",
+            "projectName": "product_service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "user_service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanchitverma.ecommerce.website.user_service.UserServiceApplication",
+            "projectName": "user_service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "vendor_service",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanchitverma.ecommerce.website.vendor_service.VendorServiceApplication",
+            "projectName": "vendor_service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayApplication<api_gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.sanchitverma.ecommerce.website.api_gateway.ApiGatewayApplication",
+            "projectName": "api_gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

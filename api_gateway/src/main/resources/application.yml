@@ -1,0 +1,54 @@
+spring:
+  # main:
+  #   web-application-type: reactive
+  application:
+    name: api_gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: USER_SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/v1/user/**
+
+        - id: CART_SERVICE
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/api/v1/cart_s/cart/**
+
+        - id : category-service
+          uri: lb://CATEGORY-SERVICE
+          predicates:
+            - Path=/api/v1/category_s/**
+
+        - id : product-service
+          uri: lb://PRODUCT_SERVICE
+          predicates:
+            - Path=/api/v1/product_s/**
+
+        - id : vendor-service
+          uri: lb://VENDOR-SERVICE
+          predicates:
+            - Path=/api/v1/vendor_s/**
+
+        - id : payment-gateway-service
+          uri: lb://payment-gateway-service
+          predicates:
+            - Path=/api/v1/payment-gateway/**
+
+server:
+  port: 6199
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    enabled: true
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://192.168.1.2:6200/eureka
